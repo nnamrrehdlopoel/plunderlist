@@ -22,3 +22,4 @@
 MAILTO=leoherrmann@arcor.de
 # m h  dom mon dow   command
 */5 * * * * cd /path/to/plunderlist; ./plunderlist.py 1>>plunderlist.log 2>>plunderlist.err
+0 * * * * git pull
