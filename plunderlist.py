@@ -38,7 +38,7 @@ updatePlan = list()
 bot_todo   = telegram.Bot(token=token_todo)
 bot_food   = telegram.Bot(token=token_food)
 
-test       = sys.argv[1] == "test"
+test       = (len(sys.argv) > 1 and sys.argv[1] == "test")
 
 query_skeleton = """SELECT {}
 		FROM Task
@@ -67,6 +67,17 @@ def upDateTime(string, update, dateOnly = False):
 	newDate = oldDate + relativedelta(**update)
 	return datetime.strftime(newDate, "%Y-%m-%d" if dateOnly else "%Y-%m-%dT%H:%M:%S") + string[19:]
 
+def sendMessage(bot, chat, text):
+	global parseMode
+	success = False
+	try:
+		bot.send_message(chat_id=chat, text=text, parse_mode=parseMode)
+		success = True
+	except telegram.error.NetworkError:
+		print("Mangels Internet wurde nichts geschrieben. Programm wird abgebrochen.")
+		sys.exit()
+	time.sleep(1)
+	return success
 
 
 # logging.basicConfig(filename=logFile,level=logging.INFO)
@@ -177,16 +188,15 @@ try:
 
 			text = telegramm
 			text = name # TODO
-			bot.send_message(chat_id=chat, text=text, parse_mode=parseMode)
+			sendMessage(bot, chat, text)
 			if date is None:
 				continue
 
 
-		chat = todo_stack if True else todo_queue
+		chat = todo_stack if True else todo_queue # TODO
 		bot  =  bot_todo
 		
-		bot.send_message(chat_id=chat, text=telegramm, parse_mode=parseMode)
-		time.sleep(1)
+		sendMessage(bot, chat, telegramm)
 		if test:
 			break
 
