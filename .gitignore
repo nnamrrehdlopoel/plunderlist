@@ -4,9 +4,12 @@ crontab
 device.txt
 !templates/*
 
-plunderlist.*
-!plunderlist.py
+
 private.py
+
+*.log
+*.err
+*.db
 
 
 
