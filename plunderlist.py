@@ -172,12 +172,12 @@ try:
 			telegramm += "\n"+ subtask
 		if anmerkung is not None:
 			telegramm += "\n"+ anmerkung
-		telegramm += "\n\nAktuell: "+ dueDate +("" if date is None else ", "+ date)
-		if newDueDate is not None:
-			telegramm += "\nNächste Wiederholung: "+ newDueDate +("" if newDate is None else ", "+ newDate)
-		telegramm += "\nID = "+ str(ID) + ("" if recurrenceType is None else " (every "+ (recurrenceType if recurrenceCount == 1 else str(recurrenceCount) +" "+ recurrenceType +"s") +")")
-		# telegramm += "\nGerät: Laptop"
-		telegramm += "\nGerät: "+ device
+		# telegramm += "\n\nAktuell: "+ dueDate +("" if date is None else ", "+ date)
+		# if newDueDate is not None:
+		# 	telegramm += "\nNächste Wiederholung: "+ newDueDate +("" if newDate is None else ", "+ newDate)
+		# telegramm += "\nID = "+ str(ID) + ("" if recurrenceType is None else " (every "+ (recurrenceType if recurrenceCount == 1 else str(recurrenceCount) +" "+ recurrenceType +"s") +")")
+		# # telegramm += "\nGerät: Laptop"
+		# telegramm += "\nGerät: "+ device
 
 		# print(telegramm, "\n\n")
 
