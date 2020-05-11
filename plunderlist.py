@@ -178,7 +178,7 @@ try:
 		# telegramm += "\nID = "+ str(ID) + ("" if recurrenceType is None else " (every "+ (recurrenceType if recurrenceCount == 1 else str(recurrenceCount) +" "+ recurrenceType +"s") +")")
 		# # telegramm += "\nGerät: Laptop"
 		# telegramm += "\nGerät: "+ device
-		telegramm += "\n/test"
+		# telegramm += "\n/test"
 
 		# print(telegramm, "\n\n")
 
