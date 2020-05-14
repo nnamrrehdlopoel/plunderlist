@@ -172,6 +172,8 @@ try:
 			telegramm += "\n"+ subtask
 		if anmerkung is not None:
 			telegramm += "\n"+ anmerkung
+		if newDueDate is None:
+			telegramm += "\n\nEinmalige Aufgabe!"
 		# telegramm += "\n\nAktuell: "+ dueDate +("" if date is None else ", "+ date)
 		# if newDueDate is not None:
 		# 	telegramm += "\nNächste Wiederholung: "+ newDueDate +("" if newDate is None else ", "+ newDate)
