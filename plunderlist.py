@@ -204,10 +204,18 @@ try:
 
 
 	for todo in updatePlan:
+		if todo[1] is not None:
+			sqliteConnection.execute("UPDATE Task SET dueDate = '"+ todo[1] +"' WHERE onlineId = '"+ str(todo[0]) +"'")
+			if todo[2] is not None:
+				sqliteConnection.execute("UPDATE Reminder SET reminderDate = '"+ todo[2] +"' WHERE taskId = '"+ str(todo[0]) +"'")
+		elif todo[2] is None:
+			sqliteConnection.execute("DELETE FROM Task    WHERE onlineId = '"+ str(todo[0]) +"'")
+			sqliteConnection.execute("DELETE FROM Note    WHERE parentId = '"+ str(todo[0]) +"'")
+			sqliteConnection.execute("DELETE FROM Subtask WHERE parentId = '"+ str(todo[0]) +"'")
+		else:
+			raise AssertionError("Data is inconsistent! Reminder without dueDate!")
 		
-		sqliteConnection.execute("UPDATE Task SET dueDate = '"+ todo[1] +"' WHERE onlineId = '"+ str(todo[0]) +"'")
-		if todo[2] is not None:
-			sqliteConnection.execute("UPDATE Reminder SET reminderDate = '"+ todo[2] +"' WHERE taskId = '"+ str(todo[0]) +"'")
+				
 		sqliteConnection.commit()
 	print("Folgenden Update-Plan umgesetzt:")
 	print(updatePlan)
