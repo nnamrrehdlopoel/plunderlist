@@ -15,11 +15,11 @@ bot:
 	./bot.py $(FLAGS)
 
 clean:
-	rm -v $(LOGFILE)
+	rm -v *.log
 	touch $(LOGFILE)
 
 clean-hard: clean
-	rm -v $(ERRFILE)
+	rm -v *.err
 	touch $(ERRFILE)
 
 .PHONY: clean all clean-hard
