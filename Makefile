@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-LC=./plunderlist.py
+LC=python3 plunderlist.py
 FOLDER=Logs/ # ?
 LOGFILE=plunderlist.log
 ERRFILE=plunderlist.err
