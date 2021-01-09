@@ -48,7 +48,7 @@ query_skeleton = """SELECT {}
 		LEFT JOIN Reminder ON Task.onlineId = Reminder.taskId
 		LEFT JOIN Note ON Task.onlineId = Note.parentId
 		LEFT JOIN Subtask ON Task.onlineId = Subtask.parentId
-		WHERE Task.dueDate BETWEEN '2020-01-01' AND '{:%Y-%m-%d}'
+		WHERE Task.dueDate BETWEEN '2021-01-01' AND '{:%Y-%m-%d}'
 		{}"""
 
 
@@ -131,7 +131,7 @@ try:
 
 		kategorie = ("" if folderTitle is None or folderTitle == kategorieTitle else (folderTitle + " - ")) + kategorieTitle
 		
-		if date is not None and now < dateObj:# or date.year < 2020:
+		if date is not None and now < dateObj:# or date.year < 2021:
 			future = int((dateObj - now).total_seconds())
 			nextTask = min(nextTask, future)
 			# print(name, "wird ignoriert. (", future,"s in der Zukunft)") # TODO fertigschreiben
@@ -145,7 +145,7 @@ try:
 
 
 
-		if date is None and now.hour < 7:
+		if date is None and now.hour < 8:
 			future = "?" # int( - now.timestamp()).total_seconds())
 			# print(name, "wird aufgeschoben. (", future,"s in der Zukunft)")
 			continue
